@@ -16,6 +16,12 @@ public class ProyectoMatematicasComputacionales {
     /**
      * @param args the command line arguments
      */
+    // el programa tiene que hacer:
+    // calcular si un numero es primo o compuesto y por que
+    // su raiz entera
+    // puede mostrar el residuo 
+    // sus factores primos
+    // podria ser los numeros primos anteriores al numero ingresado
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("Hola tonotos");
