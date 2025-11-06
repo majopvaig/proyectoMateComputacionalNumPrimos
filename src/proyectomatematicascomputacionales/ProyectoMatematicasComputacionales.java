@@ -30,7 +30,7 @@ public class ProyectoMatematicasComputacionales {
         List<Integer> divisible = new LinkedList<>();
         int contador = 1;
         int numPrimo = 15;
-        if(numPrimo > 1000){
+        if(numPrimo > 9999){
             System.out.println("Numero muy grande, no se puede procesar su calculo.");
         }
         while(contador <= numPrimo){
