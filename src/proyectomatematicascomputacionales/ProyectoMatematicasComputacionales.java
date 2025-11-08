@@ -4,6 +4,7 @@
  */
 package proyectomatematicascomputacionales;
 
+import implementaciones.Ventana;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,23 +25,6 @@ public class ProyectoMatematicasComputacionales {
     // podria ser los numeros primos anteriores al numero ingresado
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Hola tonotos");
-        
-        // idea de como seria el algoritmo
-        List<Integer> divisible = new LinkedList<>();
-        int contador = 1;
-        int numPrimo = 15;
-        if(numPrimo > 9999){
-            System.out.println("Numero muy grande, no se puede procesar su calculo.");
-        }
-        while(contador <= numPrimo){
-            if(numPrimo%contador == 0){
-                if(contador != numPrimo || contador != 1){
-                    divisible.add(contador);
-                }
-            }
-            contador++;
-        }
-    }
-    
+        Ventana ventana = new Ventana();
+    }    
 }
