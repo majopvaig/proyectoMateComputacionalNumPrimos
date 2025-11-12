@@ -55,7 +55,7 @@ public class frmVentana extends javax.swing.JFrame {
             List<Integer> npa = calculadora.numerosPrimosAnteriores(numeroEntero);
             for (Integer i : npa) {
                 if (i > 1100) {
-                    JOptionPane.showMessageDialog(frmVentana.this, "Entrada inválida, el número es demasiado grande.", "Advertencia!", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(frmVentana.this, "Entrada inválida, es un número primo pero es demasiado grande para procesarlo.", "Advertencia!", JOptionPane.WARNING_MESSAGE);
                     return;
                 } else if (npa.getLast().equals(i)) {
                     s3 += "y " + i + "\n";
@@ -65,7 +65,7 @@ public class frmVentana extends javax.swing.JFrame {
             }
             String s4 = "Su raíz entera es: " + calculadora.raizEntera(numeroEntero) + "\n";
             String s5 = "Con un residuo de: " + (numeroEntero - (calculadora.raizEntera(numeroEntero) * calculadora.raizEntera(numeroEntero))) + "\n";
-            lblRespuesta.setText("<html> <font color='1e9900'>" + s1 + "</font><br><br>" + s2 + "<br><br>" + s3 + "<br><br>" + s4 + "</html>");
+            lblRespuesta.setText("<html> <font color='1e9900'>" + s1 + "</font><br><br>" + s2 + "<br><br>" + s3 + "<br><br>" + s4 + "<br><br>" + s5 + "</html>");
             lblRespuesta.revalidate(); // recalcula el tamaño
             lblRespuesta.repaint();    // vuelve a dibujar
         }

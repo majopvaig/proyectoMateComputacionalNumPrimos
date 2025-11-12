@@ -28,23 +28,17 @@ public class Calculadora {
     
     public int numeroPrimo(int i) {
         // 1 significa que NO es primo, 0 que SI es primo
+        divisibles.clear();
         int respuesta = 0;
         // contador q ira dividiendo
         int contador = 1;
+        int raiz = raizEntera(i);
         // mientras el contador sea menor a i (el numero del cual se calcula si es primo o no)
         while (contador <= i) {
-            // si la division da como residuo 0
-            if (i % contador == 0) {
-                // y si el contador es diferente de 1 o el propio numero (i)
-                if (contador != 1) {
-                    if (contador != i) {
-                        // q lo agregue a la lista
-                        divisibles.add(contador);
-                        // es para calcular sus factores primos
-//                    if(numeroPrimo(contador) == 0){
-//                        factoresPrimos.add(i);
-//                    }
-                    }
+            // falta q valide q el contador tmb sea primo 
+            if(i % contador == 0 && contador < raiz){
+                if(contador != 1 && contador != i){
+                    divisibles.add(contador);
                 }
             }
             // aumenta el contador
@@ -78,7 +72,7 @@ public class Calculadora {
     public List<Integer> numerosPrimosAnteriores(int i){
         List<Integer> lista = new LinkedList<>();
         int contador = 1;
-        while(contador <= i){
+        while(contador < i){
             if(numeroPrimo(contador) == 0){
                 lista.add(contador);
             }
