@@ -34,12 +34,19 @@ public class frmVentana extends javax.swing.JFrame {
         if (respuesta == 1) {
             String s1 = numero + " es compuesto! \n";
             String s2 = "Esto debido a que " + numero + " es divisible por: \n";
-            List<Integer> divisibles = calculadora.getDivisibles();
-            for (Integer i : divisibles) {
-                if (divisibles.getLast().equals(i)) {
-                    s2 += "y " + i + "\n";
-                } else {
-                    s2 += i + ", ";
+            List<Integer> divisibles = calculadora.factoresPrimos(numeroEntero);
+            //calculadora.factoresPrimos(numeroEntero);
+            if(divisibles.size() == 1){
+                s2 += divisibles.get(0);
+            } else if (divisibles.size() == 2){
+                s2 += divisibles.get(0) + " y " + divisibles.get(1);
+            } else {
+                for (Integer i : divisibles) {
+                    if (divisibles.getLast().equals(i)) {
+                        s2 += "y " + i + "\n";
+                    } else {
+                        s2 += i + ", ";
+                    }
                 }
             }
             String s3 = "Su raíz entera es: " + calculadora.raizEntera(numeroEntero) + "\n";

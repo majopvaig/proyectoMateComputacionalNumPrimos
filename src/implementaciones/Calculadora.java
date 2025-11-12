@@ -13,17 +13,14 @@ import java.util.List;
  */
 public class Calculadora {
     private List<Integer> divisibles;
-    private List<Integer> factoresPrimos;
     
     
     public Calculadora(){
         divisibles = new LinkedList<>();
-        factoresPrimos = new LinkedList<>();
     }
     
     public void reiniciar(){
         divisibles.clear();
-        factoresPrimos.clear();
     }
     
     public int numeroPrimo(int i) {
@@ -31,15 +28,12 @@ public class Calculadora {
         divisibles.clear();
         int respuesta = 0;
         // contador q ira dividiendo
-        int contador = 1;
-        int raiz = raizEntera(i);
+        int contador = 2;
         // mientras el contador sea menor a i (el numero del cual se calcula si es primo o no)
-        while (contador <= i) {
+        while (contador < i) {
             // falta q valide q el contador tmb sea primo 
-            if(i % contador == 0 && contador < raiz){
-                if(contador != 1 && contador != i){
-                    divisibles.add(contador);
-                }
+            if(i % contador == 0){
+                divisibles.add(contador);
             }
             // aumenta el contador
             contador++;
@@ -60,8 +54,23 @@ public class Calculadora {
         return raiz;
     }
     
-    public List<Integer> getFactoresPrimos(){
-        return factoresPrimos;
+    public List<Integer> factoresPrimos(int i){
+        List<Integer> temp = new LinkedList<>();
+        List<Integer> factores = new LinkedList<>();
+        int raiz = raizEntera(i);
+        for(Integer elem : divisibles){
+            temp.add(elem);
+        }
+        System.out.println(temp.toString());
+        for(Integer num : temp){
+            if(num <= raiz){
+                if(numeroPrimo(num) == 0){
+                    factores.add(num);
+                }
+            }
+        }
+        System.out.println(factores.toString());
+        return factores;
     }
     
     public List<Integer> getDivisibles(){
