@@ -27,6 +27,9 @@ public class frmVentana extends javax.swing.JFrame {
         Calculadora calculadora = new Calculadora();
         String numero = txtNumero.getText();
         int numeroEntero = Integer.parseInt(numero);
+        if (txtNumero.getText().length() > 3) {
+            lblRespuesta.setFont(lblRespuesta.getFont().deriveFont(14f));
+        }
         int respuesta = calculadora.numeroPrimo(numeroEntero);
         if (respuesta == 1) {
             String s1 = numero + " es compuesto! \n";
@@ -42,6 +45,8 @@ public class frmVentana extends javax.swing.JFrame {
             String s3 = "Su raíz entera es: " + calculadora.raizEntera(numeroEntero) + "\n";
             String s4 = "Con un residuo de: " + (numeroEntero - (calculadora.raizEntera(numeroEntero) * calculadora.raizEntera(numeroEntero))) + "\n";
             lblRespuesta.setText("<html> <font color='0081fe'>" + s1 + "</font><br><br>" + s2 + "<br><br>" + s3 + "<br><br>" + s4 + "</html>");
+            lblRespuesta.revalidate(); // recalcula el tamaño
+            lblRespuesta.repaint();    // vuelve a dibujar
         } else {
             String s1 = numero + " es primo! \n";
             String s2 = "Esto debido a que " + numero + " solo es divisible por 1 y sí mismo. \n";
@@ -49,7 +54,10 @@ public class frmVentana extends javax.swing.JFrame {
             String s3 = "Números primos anteriores a " + numero + ": \n";
             List<Integer> npa = calculadora.numerosPrimosAnteriores(numeroEntero);
             for (Integer i : npa) {
-                if (npa.getLast().equals(i)) {
+                if (i > 1100) {
+                    JOptionPane.showMessageDialog(frmVentana.this, "Entrada inválida, el número es demasiado grande.", "Advertencia!", JOptionPane.WARNING_MESSAGE);
+                    return;
+                } else if (npa.getLast().equals(i)) {
                     s3 += "y " + i + "\n";
                 } else {
                     s3 += i + ", ";
@@ -58,6 +66,8 @@ public class frmVentana extends javax.swing.JFrame {
             String s4 = "Su raíz entera es: " + calculadora.raizEntera(numeroEntero) + "\n";
             String s5 = "Con un residuo de: " + (numeroEntero - (calculadora.raizEntera(numeroEntero) * calculadora.raizEntera(numeroEntero))) + "\n";
             lblRespuesta.setText("<html> <font color='1e9900'>" + s1 + "</font><br><br>" + s2 + "<br><br>" + s3 + "<br><br>" + s4 + "</html>");
+            lblRespuesta.revalidate(); // recalcula el tamaño
+            lblRespuesta.repaint();    // vuelve a dibujar
         }
 
     }
@@ -138,19 +148,19 @@ public class frmVentana extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(62, Short.MAX_VALUE)
+                        .addContainerGap(93, Short.MAX_VALUE)
                         .addComponent(lblnTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
+                        .addGap(75, 75, 75)
                         .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRespuesta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblRespuesta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(44, 44, 44))
+                                .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(61, 61, 61))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,13 +169,13 @@ public class frmVentana extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblnTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(lblRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblRespuesta, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                    .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
